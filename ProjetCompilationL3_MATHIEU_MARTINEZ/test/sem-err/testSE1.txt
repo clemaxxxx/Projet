@@ -1,0 +1,16 @@
+
+int a;
+
+/*static int a;
+dekfopefoj
+*/
+int main(void) {
+    int a;
+    char a;
+    a = 'e';
+    a=50;
+    if (1 == 5) {
+        a=20;
+    }
+    return 0;
+}

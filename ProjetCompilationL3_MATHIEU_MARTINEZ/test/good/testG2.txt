@@ -1,0 +1,8 @@
+int main(void) {
+    int x;
+    int y;
+    x = 2;
+    y = x + 3;
+    return y;
+}
+
