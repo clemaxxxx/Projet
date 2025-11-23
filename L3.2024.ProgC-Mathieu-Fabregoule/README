@@ -1,0 +1,77 @@
+MATHIEU YANIS - Groupe 3
+FABREGOULE ANTOINE - Groupe 4
+
+Compilation
+
+Après la décompression de l’archive ZIP, vous disposerez d’un répertoire nommé L3.2024.ProgC-MATHIEU.FABREGOULE, contenant les éléments suivants :
+
+-Un dossier src pour les fichiers .c.
+-Un dossier inclure pour les fichiers .h.
+-Un dossier PGM pour les images au format .pgm.
+-Un dossier QTC pour les fichiers au format .qtc.
+-Un dossier lib, initialement vide, qui contiendra le fichier .so après compilation.
+Dans ce répertoire, vous trouverez également trois fichiers Makefile :
+
+-Makefile.lib : Pour compiler la bibliothèque partagée.
+-Makefile.app : Pour générer l’exécutable codec pour la biblothéque.
+-Makefile : Un Makefile principal qui permet de compiler directement le projet en générant l’exécutable codec.
+
+Exécutez la commande suivante pour générer le fichier .so dans le dossier lib :
+  -make -f Makefile.lib
+
+Une fois la bibliothèque générée, exécutez la commande suivante pour obtenir l’exécutable codec dans le même répertoire :
+  -make -f Makefile.app
+
+Exécutez simplement la commande suivante pour lancer le programme :
+  - ./codec
+
+
+Utilisez les commandes suivantes pour nettoyer les fichiers générés par la compilation :
+  -make -f Makefile.lib clean
+  -make -f Makefile.app clean
+
+
+Vous pouvez également compiler directement tout le projet en exécutant :
+  -make
+Cela générera l’exécutable codec.
+
+
+
+
+Options disponibles
+
+Voici les options que vous pouvez utiliser avec l’exécutable codec :
+
+-h : Affiche une aide expliquant toutes les options disponibles.
+Exemple : ./codec -h
+
+-v : Affiche les différents paramètres choisis.
+Exemple : ./codec -v
+
+-c et -u :
+    -c : Code une image .pgm en un fichier .qtc.
+    -u : Décode un fichier .qtc en une image .pgm.
+    Ces options nécessitent obligatoirement l’option -i <file> pour spécifier le fichier d’entrée :
+        -Image .pgm pour le codeur.
+        -Fichier .qtc pour le décodeur.
+Exemples : ./codec -c -i PGM/test.pgm
+           ./codec -u -i QTC/test.qtc
+
+-o <file> : Spécifie le nom et l’emplacement du fichier de sortie. Si cette option n’est pas utilisée :
+    -Les fichiers .qtc générés seront nommés out.qtc et placés dans le dossier QTC.
+    -Les fichiers .pgm générés seront nommés out.pgm et placés dans le dossier PGM.
+Exemples : ./codec -c -i PGM/test.pgm -o QTC/test.qtc
+           ./codec -u -i QTC/test.qtc -o PGM/image.pgm
+
+-a <float> : Applique un filtre à l’image. Cette option est disponible uniquement pour le codeur (-c).
+Exemple : ./codec -c -i PGM/test.pgm -a 1.5
+
+-g : Édite la grille de segmentation utilisée par le codeur ou le décodeur.
+Exemples : ./codec -u -i QTC/test.qtc -g
+           ./codec -c -i PGM/image.pgm -g
+  
+
+
+Répartition du travail
+
+Nous avons principalement travaillé ensemble à la BU pour réaliser ce projet, avec une répartition équitable des tâches (50-50).

@@ -1,0 +1,23 @@
+CC = gcc
+CFLAGS = -Wall -fPIC
+LDFLAGS = -shared
+LIBRARY = libqtc.so
+SRC_DIR = src
+SRC = $(SRC_DIR)/LirePgm.c $(SRC_DIR)/codeur.c $(SRC_DIR)/decodeur.c $(SRC_DIR)/options.c $(SRC_DIR)/Buffer.c $(SRC_DIR)/QuadTree.c
+OBJ = $(SRC:.c=.o)
+
+LIBRARY_DIR = lib
+
+INCLUDE_DIR = include
+
+$(LIBRARY_DIR)/$(LIBRARY): $(OBJ) $(LIBRARY_DIR)
+	$(CC) $(LDFLAGS) -o $(LIBRARY_DIR)/$(LIBRARY) $(OBJ)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+
+clean:
+	rm -f $(OBJ) $(LIBRARY_DIR)/$(LIBRARY)
+
+all: $(LIBRARY_DIR)/$(LIBRARY)
+
